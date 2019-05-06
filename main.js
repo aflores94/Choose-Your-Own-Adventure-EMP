@@ -11,7 +11,11 @@ const normie = document.getElementById('normie')
 
 const scenario = document.getElementById('scenario')
 
+const tryAgain = document.getElementById('try_again')
+
 /*----- app's state (variables) -----*/
+let clickR = 0
+let clickL = 0
 
 /*----- cached element references -----*/
 
@@ -26,34 +30,66 @@ path1.addEventListener('click', leftPath)
 
 path2.addEventListener('click', rightPath)
 
-/*----- functions -----*/
+tryAgain.addEventListener('click', characterChoice)
 
-//chooses path 
+/*----- functions -----*/
+//win game 
+
+
+//lose game
+function loseGame() {
+    $('.paths').fadeOut(2000);
+    $('background-image').fadeOut(2000);
+    setTimeout(() => {
+        $('.lose').css('visibility', 'visible').fadeIn()
+    }, 2000);
+}
+
+
+//checks for loss
+function checkLoss() {
+    if (clickR === 3) {
+        loseGame()
+    } else if (clickL === 3) {
+        loseGame()
+    }
+}
+
+//chooses right path, adds text and increments click count
 function leftPath () {
+    clickL = clickL + 1;
+    console.log(clickL)
+
     setTimeout(() => {
       scenario.innerHTML = 'testing testing testing paragraph';
       path1.innerHTML = 'new';
       path2.innerHTML = 'new';
     }, 1000);
-    $('scenario').fadeIn(2000)
+    $('scenario').fadeIn(2000);
+
+    checkLoss()
 }
 
-
-//chooses path
+//chooses right path, adds text and increments click count
 function rightPath() {
+    clickR = clickR + 1;
+    console.log(clickR)
+    
     setTimeout(() => {
-        scenario.innerHTML = 'testing testing testing paragraph2';
-        path1.innerHTML = 'new2';
-        path2.innerHTML = 'new2';
+        scenario.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        path1.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit';
+        path2.innerHTML = 'Lorem ipsum dolor sit amet';
     }, 1000);
     $('scenario').fadeIn(2000)
+
+    checkLoss()
 }
 
 //initializes prepper game
 function initPrepper() {
     let supplies = {
-        car: ['bicycle', 'bug out bag'],
-        weapon: ['pistol']
+        car: ['', ''],
+        weapon: ['']
     }
     console.log("let's play prepper style")
 }
@@ -70,6 +106,7 @@ function initNormie() {
 //hides character choices, shows game screen, chooses init status
 function gameScreen() {
     $(".character-choice").fadeOut(1000);
+    $("header").fadeOut(1000);
     $(".paths").css('visibility', 'visible').fadeIn(2000);
     if (this === normie) {
         initNormie()

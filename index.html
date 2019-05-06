@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="./style.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script defer src='./main.js' ></script>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|ZCOOL+KuaiLe" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Squada+One|ZCOOL+KuaiLe" rel="stylesheet">
     <title>Apocalypse</title>
 </head>
 <body>
+    <header>
     <h1>Can You Survive?</h1>
     <h6>A 'Choose Your Own Adventure' Saga</h6>
+    </header>
 
     <section class='menu' id="menu">
         <div id='start'>New Game</div>
@@ -20,7 +22,7 @@
     </section>
 
     <section class='character-choice'>
-        <div id=pick>Pick a Character</div>
+    <div id=pick>Pick a Character</div>
         <div id='prepper'>Prepper 
             <img src="images/compass.jpg" alt="compass">
         </div>
@@ -32,6 +34,11 @@
         <div id='scenario'>Scenario</div>
         <div id='path1'>Left Path</div>
         <div id='path2'>Right Path</div>
+    </section>
+
+    <section class="lose">
+        <div id="try_again">Try Again</div>
+        <div id="end_game">End Game</div>
     </section>
 
 </body>
