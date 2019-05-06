@@ -13,9 +13,12 @@ const scenario = document.getElementById('scenario')
 
 const tryAgain = document.getElementById('try_again')
 
+const gameWin = [1, 0, 1]
+
 /*----- app's state (variables) -----*/
 let clickR = 0
 let clickL = 0
+let gamePlay = []
 
 /*----- cached element references -----*/
 
@@ -33,7 +36,10 @@ path2.addEventListener('click', rightPath)
 tryAgain.addEventListener('click', characterChoice)
 
 /*----- functions -----*/
-//win game 
+//win game
+function winGame() {
+console.log('you win!')    
+}
 
 
 //lose game
@@ -46,9 +52,11 @@ function loseGame() {
 }
 
 
-//checks for loss
-function checkLoss() {
-    if (clickR === 3) {
+//checks for win or lose
+function checkStatus() {
+    if (gamePlay.join('') === gameWin.join('')) {
+        winGame()
+    } else if (clickR === 3) {
         loseGame()
     } else if (clickL === 3) {
         loseGame()
@@ -60,6 +68,8 @@ function leftPath () {
     clickL = clickL + 1;
     console.log(clickL)
 
+    gamePlay.push(0)
+
     setTimeout(() => {
       scenario.innerHTML = 'testing testing testing paragraph';
       path1.innerHTML = 'new';
@@ -67,13 +77,15 @@ function leftPath () {
     }, 1000);
     $('scenario').fadeIn(2000);
 
-    checkLoss()
+    checkStatus()
 }
 
 //chooses right path, adds text and increments click count
 function rightPath() {
     clickR = clickR + 1;
     console.log(clickR)
+
+    gamePlay.push(1)
     
     setTimeout(() => {
         scenario.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
@@ -82,7 +94,7 @@ function rightPath() {
     }, 1000);
     $('scenario').fadeIn(2000)
 
-    checkLoss()
+    checkStatus()
 }
 
 //initializes prepper game
