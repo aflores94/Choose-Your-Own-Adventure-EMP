@@ -40,26 +40,3 @@ for rightPath = 1 innerHTML.'NEW CONTENT'
 
 right and left path each start at 0 
 
-
-array idea
-[
-    [0, 1]
-    [0, 1]
-    [1, 0]
-    [0, 1]
-    [1, 1]
-]
-    .push()
-const win = [1, 0, 0, 1]
-
-const choices = [1, 0, 0, 1]
-
-if (win.join('') === choices.join('') || ) {
-    win
-}
-else if () {
-
-} 
-else {
-
-}
