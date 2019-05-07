@@ -22,7 +22,7 @@ let clickR = 0
 let clickL = 0
 let currentArray = []
 let pathState = [clickL, clickR]
-let gamePlay = pathState.join('')
+let gamePlay = '00'
 let supplies = {}
 
 /*----- cached element references -----*/
@@ -61,8 +61,7 @@ function startOver(){
 
 //lose game
 function loseGame() {
-
-    $('background-image').fadeOut(2000);
+    $('.paths').fadeOut(1000)
     setTimeout(() => {
         $('.lose').fadeIn()
     }, 2000);
@@ -73,10 +72,10 @@ function loseGame() {
 function checkStatus() {
     if (currentArray.join('') === gameWin.join('')) {
        winGame()
-    } else if (clickR === 3) {
+    } else if (clickR === 25) {
         $('.paths').fadeOut(2000);
         loseGame()
-    } else if (clickL === 3) {
+    } else if (clickL === 2) {
         $('.paths').fadeOut(2000);
         loseGame()
     }
@@ -84,40 +83,62 @@ function checkStatus() {
 //game play 
 
 function pushText() {
-switch (gamePlay) {
-    case '00':
-        console.log('left path 1');
-        scenario.innerHTML = 'pushText' + supplies.car + 'test';
-        path1.innerHTML = 'pushText test';
-        path2.innerHTML = 'pushText test';
-        break;
-    // case '02':
-    //     console.log('left path 2');
-    //     scenario.innerHTML = 'pushText test 2';
-    //     path1.innerHTML = 'pushText test 2';
-    //     path2.innerHTML = 'pushText test 2';
-    //     break;
-    // case 3:
-    //     console.log('left path 3');
-    //     break;
-    // case 4:
-    //     console.log('left path 4');
-    //     break;
+    if (this.checkStatus !== loseGame || winGame) {
+    setTimeout(() => {
+    switch (gamePlay) {
+        case '00':
+            scenario.innerHTML = "You're at work. Suddenly the power goes out. You check your phone. It doesn't work. You get up to say something to your coworker. You hear a loud boom and see an explosion in the distance.";
+            path1.innerHTML = "Stay put. You don't want to risk leaving when you don't know what's going on.";
+            path2.innerHTML = "Leave now. You'll be safer at home.";
+            break;
+        case '10':
+            scenario.innerHTML = "It's getting dark."
+            path1.innerHTML = ""
+            path2.innerHTML = "Go home. You can't wait any longer." 
+            break;
+        case '01': case '11':
+            scenario.innerHTML = "You grab your bag and head down to your " + supplies.car + '. You start to walk.';
+            path1.innerHTML = ""
+            path2.innerHTML = "Continue";
+            break;
+        case '02': case '12':
+            scenario.innerHTML = "As you walk you start to see crazy things. Something is very wrong.";
+            path1.innerHTML = "Turn around";
+            path2.innerHTML = "Go faster";
+            break;
+        // case '22': case '12':
+        //     scenario.innerHTML = 
+        //     path1.innerHTML = 
+        //     path2.innerHTML =
+        //     break; 
+        case '03': case '13':
+            scenario.innerHTML = "Home is still almost 10 miles away. You're getting thirsty. There is a gas station up ahead but it seems chaotic inside.";
+            path1.innerHTML = "Stop and get water.";
+            path2.innerHTML = "Keep going";
+            break;
+        }
+    
+    }, 1000);;
+    } else if (this.checkStatus === loseGame || winGame) {
+        $('.paths').fadeOut(0);
     }
-    $('scenario').fadeIn(2000);
+
+    setTimeout(() => {
+$('.paths').fadeIn(1000);
+    }, 1500);;
 }
 
 //chooses right path, adds text and increments click count
 function leftPath () {
     clickL = clickL + 1;
     pathState.splice(0, 1, clickL)
-    console.log(clickL)
+    gamePlay = pathState.join('')
 
     currentArray.push(0)
 
     checkStatus()
 
-    $('scenario').fadeOut(2000);
+    $('.paths').fadeOut(1000);
 
     pushText()
 }
@@ -126,55 +147,42 @@ function leftPath () {
 function rightPath() {
     clickR = clickR + 1;
     pathState.splice(1, 1, clickR)
-    console.log(clickR)
+    gamePlay = pathState.join('')
 
     currentArray.push(1)
     
     checkStatus()
 
-    $('scenario').fadeIn(2000)
+    $('.paths').fadeOut(1000)
+
 
     pushText()
-   
 }
 
 //initializes prepper game
 function initPrepper() {
-    scenario.innerHTML = "You're at work. Suddenly the power goes out. You check your phone. It doesn't work. You get up to say something to your coworker. You hear a loud boom and see an explosion in the distance.";
-    path1.innerHTML = "Stay put. You don't want to risk leaving when you don't know what's going on.";
-    path2.innerHTML = "Leave now. You'll be safer at home.";
+    pushText()
     supplies.car = 'truck'
     supplies.weapon = 'gun'
 }
 
-// var obj = {
-//     key1: value1,
-//     key2: value2
-// };
-
 //initializes normie game
 function initNormie() {
-    scenario.innerHTML = "You're at work. Suddenly the power goes out. You check your phone. It doesn't work. You get up to say something to your coworker. You hear a loud boom and see an explosion in the distance.";
-    path1.innerHTML = "Stay put. You don't want to risk leaving when you don't know what's going on.";
-    path2.innerHTML = "Leave now. You'll be safer at home.";
-   
+    pushText()
     supplies.car = 'prius'
     supplies.weapon = 'none'
-    }
+}
 
-//hides character choices, shows game screen, chooses init status
+//hides character choices, shows game screen, chooses character status
 function gameScreen() {
     $(".character-choice").fadeOut(1000);
     $("header").fadeOut(1000);
-    setTimeout(() => {
-        $(".paths").fadeIn(2000);
     if (this === normie) {
         initNormie()
     }
     else if (this === prepper) {
         initPrepper()
     }
-    }, 1000);;
 }
 
 //hides menu, displays character choices
@@ -186,7 +194,7 @@ function characterChoice() {
     }, 1000);;
 }
     
-
+//initialize menu screen 
 function init(){
     $('.character-choice').fadeOut(0)
     $('.paths').fadeOut(0)
