@@ -20,7 +20,10 @@ const gameWin = [1, 0, 1]
 /*----- app's state (variables) -----*/
 let clickR = 0
 let clickL = 0
-let gamePlay = []
+let currentArray = []
+let pathState = [clickL, clickR]
+let gamePlay = pathState.join('')
+let supplies = {}
 
 /*----- cached element references -----*/
 
@@ -68,7 +71,7 @@ function loseGame() {
 
 //checks for win or lose
 function checkStatus() {
-    if (gamePlay.join('') === gameWin.join('')) {
+    if (currentArray.join('') === gameWin.join('')) {
        winGame()
     } else if (clickR === 3) {
         $('.paths').fadeOut(2000);
@@ -78,39 +81,61 @@ function checkStatus() {
         loseGame()
     }
 }
+//game play 
+
+function pushText() {
+switch (gamePlay) {
+    case '00':
+        console.log('left path 1');
+        scenario.innerHTML = 'pushText' + supplies.car + 'test';
+        path1.innerHTML = 'pushText test';
+        path2.innerHTML = 'pushText test';
+        break;
+    // case '02':
+    //     console.log('left path 2');
+    //     scenario.innerHTML = 'pushText test 2';
+    //     path1.innerHTML = 'pushText test 2';
+    //     path2.innerHTML = 'pushText test 2';
+    //     break;
+    // case 3:
+    //     console.log('left path 3');
+    //     break;
+    // case 4:
+    //     console.log('left path 4');
+    //     break;
+    }
+    $('scenario').fadeIn(2000);
+}
 
 //chooses right path, adds text and increments click count
 function leftPath () {
     clickL = clickL + 1;
+    pathState.splice(0, 1, clickL)
     console.log(clickL)
 
-    gamePlay.push(0)
+    currentArray.push(0)
 
     checkStatus()
 
-    setTimeout(() => {
-      scenario.innerHTML = 'testing testing testing paragraph';
-      path1.innerHTML = 'new';
-      path2.innerHTML = 'new';
-    }, 1000);
-    $('scenario').fadeIn(2000);
+    $('scenario').fadeOut(2000);
+
+    pushText()
 }
 
 //chooses right path, adds text and increments click count
 function rightPath() {
     clickR = clickR + 1;
+    pathState.splice(1, 1, clickR)
     console.log(clickR)
 
-    gamePlay.push(1)
+    currentArray.push(1)
     
     checkStatus()
- 
-    setTimeout(() => {
-        scenario.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-        path1.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit';
-        path2.innerHTML = 'Lorem ipsum dolor sit amet';
-    }, 1000);
+
     $('scenario').fadeIn(2000)
+
+    pushText()
+   
 }
 
 //initializes prepper game
@@ -118,22 +143,24 @@ function initPrepper() {
     scenario.innerHTML = "You're at work. Suddenly the power goes out. You check your phone. It doesn't work. You get up to say something to your coworker. You hear a loud boom and see an explosion in the distance.";
     path1.innerHTML = "Stay put. You don't want to risk leaving when you don't know what's going on.";
     path2.innerHTML = "Leave now. You'll be safer at home.";
-    let supplies = {
-        car: ['', ''],
-        weapon: ['']
-    }
+    supplies.car = 'truck'
+    supplies.weapon = 'gun'
 }
+
+// var obj = {
+//     key1: value1,
+//     key2: value2
+// };
 
 //initializes normie game
 function initNormie() {
     scenario.innerHTML = "You're at work. Suddenly the power goes out. You check your phone. It doesn't work. You get up to say something to your coworker. You hear a loud boom and see an explosion in the distance.";
     path1.innerHTML = "Stay put. You don't want to risk leaving when you don't know what's going on.";
     path2.innerHTML = "Leave now. You'll be safer at home.";
-    let supplies = {
-        car: ['', ''],
-        weapon: ['']
+   
+    supplies.car = 'prius'
+    supplies.weapon = 'none'
     }
-}
 
 //hides character choices, shows game screen, chooses init status
 function gameScreen() {
