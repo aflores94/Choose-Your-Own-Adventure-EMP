@@ -72,10 +72,7 @@ function loseGame() {
 function checkStatus() {
     if (currentArray.join('') === gameWin.join('')) {
        winGame()
-    } else if (clickR === 25) {
-        $('.paths').fadeOut(2000);
-        loseGame()
-    } else if (clickL === 2) {
+    } else if (gamePlay === '22') {
         $('.paths').fadeOut(2000);
         loseGame()
     }
@@ -83,7 +80,6 @@ function checkStatus() {
 //game play 
 
 function pushText() {
-    if (this.checkStatus !== loseGame || winGame) {
     setTimeout(() => {
     switch (gamePlay) {
         case '00':
@@ -106,26 +102,22 @@ function pushText() {
             path1.innerHTML = "Turn around";
             path2.innerHTML = "Go faster";
             break;
-        // case '22': case '12':
-        //     scenario.innerHTML = 
-        //     path1.innerHTML = 
-        //     path2.innerHTML =
-        //     break; 
+        case '22':
+            $('.paths').fadeOut(0);
+            break; 
         case '03': case '13':
             scenario.innerHTML = "Home is still almost 10 miles away. You're getting thirsty. There is a gas station up ahead but it seems chaotic inside.";
             path1.innerHTML = "Stop and get water.";
             path2.innerHTML = "Keep going";
             break;
         }
-    
     }, 1000);;
-    } else if (this.checkStatus === loseGame || winGame) {
-        $('.paths').fadeOut(0);
-    }
 
+    if (gamePlay !== '22') {
     setTimeout(() => {
-$('.paths').fadeIn(1000);
+        $('.paths').fadeIn(1000);
     }, 1500);;
+    }
 }
 
 //chooses right path, adds text and increments click count
