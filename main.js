@@ -17,6 +17,8 @@ const endGame = document.getElementById('end_game')
 
 const gameWin = [1, 0, 1]
 
+const gameLoss = [0, 0, 0]
+
 /*----- app's state (variables) -----*/
 let clickR = 0
 let clickL = 0
@@ -47,10 +49,13 @@ init()
 
 //win game
 function winGame() {
-    $('.paths').fadeOut(2000)
-setTimeout(() => {
-    $('.win').fadeIn(1000)
-}, 2000);
+    setTimeout(() => {
+    $('.paths').fadeOut(500)
+    }, 1000);
+
+    setTimeout(() => {
+        $('.win').fadeIn(1000)
+    }, 1000);
 }
 
 //try again 
@@ -63,23 +68,38 @@ function startOver(){
 function loseGame() {
     $('.paths').fadeOut(1000)
     setTimeout(() => {
-        $('.lose').fadeIn()
+        $('.lose').fadeIn(1000)
     }, 2000);
 }
-
 
 //checks for win or lose
 function checkStatus() {
     if (currentArray.join('') === gameWin.join('')) {
-       winGame()
-    } else if (gamePlay === '22') {
-        $('.paths').fadeOut(2000);
+        winGame()
+    } else if (currentArray.join('') === gameLoss.join('')) {
         loseGame()
+    // } else if ( healthPoints <= 0) {
+    //     loseGame()
     }
 }
-//game play 
 
+// function health() {
+//     if (gamePlay === '') {
+//     let healthPoints = healthPoints - 1
+// }
+
+//game play 
 function pushText() {
+    $('.paths').fadeOut(1000);
+
+    checkStatus()
+
+    if (currentArray.join('') === gameWin.join('')) {
+        return
+    } else if (currentArray.join('') === gameLoss.join('')) {
+        return
+    }
+
     setTimeout(() => {
     switch (gamePlay) {
         case '00':
@@ -102,22 +122,17 @@ function pushText() {
             path1.innerHTML = "Turn around";
             path2.innerHTML = "Go faster";
             break;
-        case '22':
-            $('.paths').fadeOut(0);
-            break; 
         case '03': case '13':
             scenario.innerHTML = "Home is still almost 10 miles away. You're getting thirsty. There is a gas station up ahead but it seems chaotic inside.";
             path1.innerHTML = "Stop and get water.";
             path2.innerHTML = "Keep going";
             break;
         }
-    }, 1000);;
+    }, 1000);
 
-    if (gamePlay !== '22') {
     setTimeout(() => {
         $('.paths').fadeIn(1000);
-    }, 1500);;
-    }
+    }, 1000);
 }
 
 //chooses right path, adds text and increments click count
@@ -127,10 +142,6 @@ function leftPath () {
     gamePlay = pathState.join('')
 
     currentArray.push(0)
-
-    checkStatus()
-
-    $('.paths').fadeOut(1000);
 
     pushText()
 }
@@ -142,11 +153,6 @@ function rightPath() {
     gamePlay = pathState.join('')
 
     currentArray.push(1)
-    
-    checkStatus()
-
-    $('.paths').fadeOut(1000)
-
 
     pushText()
 }
