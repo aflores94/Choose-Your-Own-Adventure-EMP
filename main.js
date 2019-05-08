@@ -40,9 +40,9 @@ path1.addEventListener('click', leftPath)
 
 path2.addEventListener('click', rightPath)
 
-tryAgain.addEventListener('click', startOver)
+try_again.addEventListener('click', redo)
 
-endGame.addEventListener('click', init)
+endGame.addEventListener('click', startOver)
 
 /*----- functions -----*/
 init()
@@ -58,10 +58,22 @@ function winGame() {
     }, 1000);
 }
 
-//try again 
-function startOver(){
+//start over 
+function startOver() {
     $('.lose').fadeOut(1000)
-    characterChoice()
+    setTimeout(() => {
+        currentArray = []
+        gamePlay = '00'
+        init()
+    }, 1000);
+}
+
+//try again 
+function redo(){
+    $('.lose').fadeOut(1000)
+    currentArray.pop()
+    // gamePlay = gamePlay - the last thing modified
+    pushText()
 }
 
 //lose game
