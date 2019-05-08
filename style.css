@@ -1,3 +1,4 @@
+/* BACKGROUND IMAGE  */
 
 html { 
   background: url(images/apocalypse.jpg) no-repeat center center fixed; 
@@ -8,6 +9,7 @@ html {
 
     
 /* HEADING */
+
 h1, h6 {
     font-family: 'ZCOOL KuaiLe', cursive;
     text-align: center;
@@ -23,11 +25,13 @@ h6 {
 }
 
 /* MENU */
+
 .menu {
     display: grid; 
     grid-template-columns: 1;
     grid-template-rows: 2;
     gap: 20px;
+    font-size: 18px;
     font-family: 'Squada One', cursive;
     place-content: center;
     text-align: center;
@@ -35,7 +39,7 @@ h6 {
 }
 
 #start, #continue {
-    background-color: rgba(87, 206, 97, 0.5);
+    background-color: rgba(0, 128, 0, .5);
     border: 5px solid black;
     padding: 10px;
     color: white;
@@ -52,6 +56,7 @@ h6 {
 } 
 
 /* CHARACTER CHOICE */
+
 .character-choice {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -96,6 +101,7 @@ img {
 }
 
 /* PATHS */
+
 .paths {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -137,44 +143,45 @@ img {
 
 
 /* LOSE SCREEN */
+
 .lose {
-    display: grid; 
-    grid-template-columns: 2;
-    grid-template-rows: 1;
-    gap: 20px;
-    font-family: 'ZCOOL KuaiLe', cursive;
-    text-align: center; 
-    place-content: center;
-    margin: 15vh auto;
-    width: 60vh;
-}
-
-#try_again, #end_game {
-    background-color: rgba(0, 128, 0, .5);
-    border: 4px solid white;
-    padding: 10px;
-    color: white;
-}
-
-#try_again{
-    display: grid;
-    grid-column: 1 / 2;
-}
-
-#end_game {
-    display: grid;
-    grid-column: 2 / 3;
-} 
-
-/* win screen  */
-
-.win {
+    display: flex;
+    flex-direction: column;
     color: white;
     font-family: 'Squada One', cursive;
     font-size: 18px;
     text-align: center;  
-    margin: 30vh auto;
-    border: 4px solid white; 
+    margin: 25vh auto;
     width: 50vh;
+
+}
+
+#wrong-choice, #try_again, #end_game {
+    border: 5px solid black;
+    margin: 5px; 
+    align-content: center;
+    padding: 2vh;
+    background-color: rgba(0, 128, 0, .5);
+}
+
+/* WIN SCREENw  */
+
+.win {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-family: 'Squada One', cursive;
+    font-size: 18px;
+    text-align: center;  
+    margin: 25vh auto;
+    width: 50vh;
+
+}
+
+.level-1-complete, #main_menu, #next-level {
+    border: 5px solid black;
+    margin: 5px; 
+    align-content: center;
+    padding: 2vh;
     background-color: rgba(0, 128, 0, .5);
 }

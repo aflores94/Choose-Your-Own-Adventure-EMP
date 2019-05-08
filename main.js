@@ -15,6 +15,8 @@ const tryAgain = document.getElementById('try_again')
 
 const endGame = document.getElementById('end_game')
 
+const menu = document.getElementById('main_menu')
+
 const gameWin = [1, 0, 1]
 
 const gameLoss = [0, 0, 0]
@@ -40,9 +42,11 @@ path1.addEventListener('click', leftPath)
 
 path2.addEventListener('click', rightPath)
 
-try_again.addEventListener('click', redo)
+tryAgain.addEventListener('click', redo)
 
 endGame.addEventListener('click', startOver)
+
+menu.addEventListener('click', startOver)
 
 /*----- functions -----*/
 init()
@@ -55,10 +59,11 @@ function winGame() {
 
     setTimeout(() => {
         $('.win').fadeIn(1000)
-    }, 1000);
+    }, 2000);
 }
 
-//start over 
+
+//end game
 function startOver() {
     $('.lose').fadeOut(1000)
     setTimeout(() => {
@@ -90,15 +95,10 @@ function checkStatus() {
         winGame()
     } else if (currentArray.join('') === gameLoss.join('')) {
         loseGame()
-    // } else if ( healthPoints <= 0) {
-    //     loseGame()
     }
 }
 
-// function health() {
-//     if (gamePlay === '') {
-//     let healthPoints = healthPoints - 1
-// }
+
 
 //game play 
 function pushText() {
