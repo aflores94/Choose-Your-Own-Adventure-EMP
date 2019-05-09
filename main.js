@@ -11,11 +11,11 @@ const normie = document.getElementById('normie')
 
 const scenario = document.getElementById('scenario')
 
-const tryAgain = document.getElementById('try_again')
+const tryAgain = document.getElementById('try-again')
 
-const endGame = document.getElementById('end_game')
+const endGame = document.getElementById('end-game')
 
-const menu = document.getElementById('main_menu')
+const menu = document.getElementById('main-menu')
 
 const gameWin = [
     [1, 1, 1, 1, 0, 0, 1, 1],
@@ -124,20 +124,20 @@ function pushText() {
         switch (currentArray.join('')) {
             //at work
             case '':
-                scenario.innerHTML = "You're at work. Suddenly the power goes out. You check your phone. It doesn't work. You get up to say something to your coworker. You hear a loud boom and see an explosion in the distance.";
+                scenario.innerHTML = "You're at work. Suddenly the power goes out. You check your phone. It doesn't work. You get up to say something to your coworker. You hear a loud boom. A few seconds later you hear another boom and see an explosion in the distance.";
                 path1.innerHTML = "Stay put. You don't want to risk leaving when you don't know what's going on.";
                 path2.innerHTML = "Leave now. You'll be safer at home.";
                 break;
                 //choose to stay
             case '0':
-                scenario.innerHTML = "It's getting dark."
+                scenario.innerHTML = "The power isn't coming back on and everyone is slowly leaving the office."
                 path1.innerHTML = ""
                 path2.innerHTML = "Go home. You can't wait any longer."
                 break;
                 //choose to leave
             case '1':
             case '01':
-                scenario.innerHTML = "You get your bag and go down to your " + supplies.car + ".Your key doesn't work. Thank god for the manual back up! But the car won't start. You try it again.The manual key doesn't save you this time. Are you really about to walk home?"
+                scenario.innerHTML = "You get your bag and go down to your " + supplies.car + ".Your key doesn't work. Thank god for the manual back up! But the car won't start. You try it again. The manual key doesn't save you this time. Are you really about to' + supplies.transportation + ' home?"
                 path1.innerHTML = ""
                 path2.innerHTML = "Continue";
                 break;
@@ -151,29 +151,29 @@ function pushText() {
                 //start to walk 
             case '111':
             case '0111':
-                scenario.innerHTML = "As you walk you start to see crazy things. Something is very wrong.";
+                scenario.innerHTML = "As soon as you walk out onto the street it's chaos. Cars have piled up everywhere totally blocking the roads. Something is very wrong.";
                 path1.innerHTML = "Turn around";
                 path2.innerHTML = "Go faster";
                 break;
                 //choose to turn around 
             case '1110':
             case '01110':
-                scenario.innerHTML = "You go back to the office. A few people are still there hanging around. You wait a few hours and eventually the national guard arrives. They aren't letting people leave for their own safety."
+                scenario.innerHTML = "You go back to the office. A few people are still there hanging around. You wait a few hours and eventually the national guard arrives. They aren't letting people leave the building for their own safety."
                 path1.innerHTML = ""
                 path2.innerHTML = ""
                 break;
                 //choose to keep going 
             case '1111':
             case '01111':
-                scenario.innerHTML = "Home is still 10 miles away, you're getting thirsty. You see a gas station up ahead.";
+                scenario.innerHTML = "Home is still almost 10 miles away. You drank the water you had too fast and you're getting thirsty. You see a gas station up ahead.";
                 path1.innerHTML = "Stop and get some water.";
                 path2.innerHTML = "Keep going";
                 break;
                 //choose to go to gas station 
             case '11110':
             case '011110':
-                scenario.innerHTML = "It's chaotic inside. There are five people crowded around the register. It isn't working and neither is the ATM. People are darting in and out.";
-                path1.innerHTML = "Toss a $5 on the counter and get out";
+                scenario.innerHTML = "It's chaotic inside. There are people crowded around the broken register. The ATM isn't working either. People are darting in and out of the store taking what they can carry.";
+                path1.innerHTML = "Take a bottle, toss a $5 on the counter and get out";
                 path2.innerHTML = "Leave with nothing";
                 break;
                 //choose to take water
@@ -186,7 +186,7 @@ function pushText() {
                 //you make it out of the gas station
             case '1111001':
             case '01111001':
-                scenario.innerHTML = "You made it out";
+                scenario.innerHTML = "You made it out of the gas station without being followed.";
                 path1.innerHTML = ""
                 path2.innerHTML = "Continue";
                 break;
@@ -234,6 +234,7 @@ function initPrepper() {
     supplies.supplies = 'go around to the trunk for your bug out bag and foldable bike'
     supplies.car = 'truck'
     supplies.homeTime = '9pm but'
+    supplies.transportation = 'bike'
 }
 
 //initializes normie game
@@ -242,6 +243,7 @@ function initNormie() {
     supplies.supplies = 'search through your car for anything useful. Some tic-tacs and a half empty water bottle. Fantastic.'
     supplies.car = 'prius'
     supplies.homeTime = '2pm.'
+    supplies.transportation = 'walk'
 }
 
 //hides character choices, shows game screen, chooses character status
