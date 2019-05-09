@@ -30,11 +30,7 @@ const gameLoss = [
         ]
 
 /*----- app's state (variables) -----*/
-// let clickR = 9
-// let clickL = 1
 let currentArray = []
-// let pathState = [clickL, clickR]
-// let gamePlay = '19'
 let supplies = {}
 
 /*----- cached element references -----*/
@@ -81,15 +77,10 @@ function startOver() {
     }, 1000);
 }
 
-// let previousDecision = gamePlay
-
 //try again 
 function redo() {
     $('.lose').fadeOut(1000)
     currentArray.pop()
-    // if (gamePlay === 46 || 16) {
-    //     gamePlay = 06
-    // }
     pushText()
 }
 
@@ -103,7 +94,7 @@ function loseGame() {
 
 //checks for win or lose
 function checkStatus() {
-    if (currentArray.join('') === gameWin.join('')) {
+    if (currentArray.includes(gameWin)) {
         winGame()
     } else if (currentArray.join('') === gameLoss.join('')) {
         loseGame()
@@ -206,23 +197,13 @@ function pushText() {
 
 //chooses right path, adds text and increments click count
 function leftPath() {
-    // clickL = clickL + 1;
-    // pathState.splice(0, 1, clickL)
-    // gamePlay = pathState.join('')
-
     currentArray.push(0)
-
     pushText()
 }
 
 //chooses right path, adds text and increments click count
 function rightPath() {
-    // clickR = clickR - 1;
-    // pathState.splice(1, 1, clickR)
-    // gamePlay = pathState.join('')
-
     currentArray.push(1)
-
     pushText()
 }
 
