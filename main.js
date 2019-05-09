@@ -57,12 +57,23 @@ init()
 
 //win game
 function winGame() {
-    $('.paths').fadeOut(1000)
+    setTimeout(() => {
+        $('.paths').fadeOut(1000)
+        scenario.innerHTML = "It's " + supplies.homeTime + " you made it home.";
+        path1.innerHTML = ""
+        path2.innerHTML = ""
+        $('.paths').fadeIn(1000)
+    }, 1000);
+
+    setTimeout(() => {
+        $('.paths').fadeOut(1000)
+    }, 5000);
 
     setTimeout(() => {
         $('.win').fadeIn(1000)
-    }, 2000);
+    }, 6000);
 }
+
 
 
 //end game
@@ -83,10 +94,21 @@ function redo() {
 
 //lose game
 function loseGame() {
-    $('.paths').fadeOut(1000)
+    setTimeout(() => {
+        $('.paths').fadeOut(1000)
+        scenario.innerHTML = "It's " + supplies.homeTime + " you made it home.";
+        path1.innerHTML = ""
+        path2.innerHTML = ""
+        $('.paths').fadeIn(1000)
+    }, 1000);
+
+    setTimeout(() => {
+        $('.paths').fadeOut(1000)
+    }, 5000);
+
     setTimeout(() => {
         $('.lose').fadeIn(1000)
-    }, 2000);
+    }, 6000);
 }
 
 //checks for win or lose
@@ -109,17 +131,6 @@ function pushText() {
 
     checkStatus()
 
-    for (i = 0; i < gameWin.length; i++) {
-        if (currentArray.join('') === gameWin[i].join('')) {
-            return
-        }
-    }
-    for (i = 0; i < gameLoss.length; i++) {
-        if (currentArray.join('') === gameLoss[i].join('')) {
-            return
-        }
-    }
-
     setTimeout(() => {
         switch (currentArray.join('')) {
             //at work
@@ -137,7 +148,7 @@ function pushText() {
                 //choose to leave
             case '1':
             case '01':
-                scenario.innerHTML = "You get your bag and go down to your " + supplies.car + ".Your key doesn't work. Thank god for the manual back up! But the car won't start. You try it again. The manual key doesn't save you this time. Are you really about to' + supplies.transportation + ' home?"
+                scenario.innerHTML = "You get your bag and go down to your " + supplies.car + ".Your key doesn't work. Thank god for the manual back up! But the car won't start. You try it again. The manual key doesn't save you this time. Are you really about to " + supplies.transportation + " home?"
                 path1.innerHTML = ""
                 path2.innerHTML = "Continue";
                 break;
@@ -210,6 +221,18 @@ function pushText() {
                 break;
         }
     }, 1000);
+
+    for (i = 0; i < gameWin.length; i++) {
+        if (currentArray.join('') === gameWin[i].join('')) {
+            return
+        }
+    }
+
+    for (i = 0; i < gameLoss.length; i++) {
+        if (currentArray.join('') === gameLoss[i].join('')) {
+            return
+        }
+    }
 
     setTimeout(() => {
         $('.paths').fadeIn(1000);
