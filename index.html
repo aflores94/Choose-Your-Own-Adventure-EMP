@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./style.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script defer src='./main.js' ></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script defer src='./main.js'></script>
     <link href="https://fonts.googleapis.com/css?family=Squada+One|ZCOOL+KuaiLe" rel="stylesheet">
     <title>Apocalypse</title>
 </head>
+
 <body>
     <header>
-    <h1>Can You Survive?</h1>
-    <h6>A 'Choose Your Own Adventure' Saga</h6>
+        <h1>Can You Survive?</h1>
+        <h6>A 'Choose Your Own Adventure' Saga</h6>
     </header>
 
     <section class='menu' id="menu">
@@ -22,14 +25,15 @@
     </section>
 
     <section class='character-choice'>
-    <div id=pick>Pick a Character</div>
-        <div id='prepper'>Prepper 
+        <div id=pick>Pick a Character</div>
+        <div id='prepper'>Prepper
             <img src="images/compass.jpg" alt="compass">
         </div>
         <div id='normie'>Couch Potato
-            <img src="images/couch.png" alt="couch"><div>
+            <img src="images/couch.png" alt="couch">
+        </div>
     </section>
-    
+
     <section class='paths'>
         <div id='scenario'></div>
         <div id='path1'></div>
@@ -37,19 +41,24 @@
     </section>
 
     <section class="lose">
-        <div id="wrong-choice">Bad Decision <br><br>
-        Level Failed 
+        <div id="wrong-choice">
+            Bad Decision
+            <br><br>
+            Level Failed
         </div>
         <div id="try_again">Try Again</div>
         <div id="end_game">End Game</div>
     </section>
 
     <section class="win">
-        <div class=level-1-complete>Level 1 Complete <br><br>
-        You Made it Home
+        <div class=level-1-complete>
+            Level 1 Complete
+            <br><br>
+            You Made it Home
         </div>
         <div id="next-level">Next Level</div>
         <div id="main_menu">Main Menu</div>
     </section>
 </body>
+
 </html>
