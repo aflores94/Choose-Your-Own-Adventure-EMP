@@ -9,8 +9,11 @@ The goal of Level 1 is to get out of downtown and get home.
 Every choice you make will either take you closer to your goal or cause you to lose the game. 
 
 ## Screenshots
-
-Images of your actual game.
+![Main Menu screenshot](images/Main-Menu-Screenshot.png "Main Menu")
+![Pick Character screenshot](images/Pick-Character-Screenshot.png "Pick Character")
+![Game play screenshot](images/Game-Play-Screenshot.png "Game Play")
+![Win Screenshot](images/Win-Screenshot.png "Win")
+![Lose screenshot](images/Lose-Screenshot.png "Lose")
 
 ## Technologies Used: 
 * CSS
