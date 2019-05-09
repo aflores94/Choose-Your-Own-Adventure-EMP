@@ -17,17 +17,17 @@ const endGame = document.getElementById('end_game')
 
 const menu = document.getElementById('main_menu')
 
-const gameWin = [ 
-        [1, 1, 1, 1, 0, 0, 1, 1],
-        [0, 1, 1, 1, 1, 0, 0, 1],
-        [1, 1, 1, 1, 1, 1],
-        [0, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 0, 1, 1],
-        ]
+const gameWin = [
+    [1, 1, 1, 1, 0, 0, 1, 1],
+    [0, 1, 1, 1, 1, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1],
+    [0, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 0, 1, 1],
+]
 const gameLoss = [
-        [1, 1, 1, 0],
-        [0, 1, 1, 1, 0],
-        ]
+    [1, 1, 1, 0],
+    [0, 1, 1, 1, 0],
+]
 
 /*----- app's state (variables) -----*/
 let currentArray = []
@@ -57,9 +57,7 @@ init()
 
 //win game
 function winGame() {
-    setTimeout(() => {
-        $('.paths').fadeOut(500)
-    }, 1000);
+    $('.paths').fadeOut(1000)
 
     setTimeout(() => {
         $('.win').fadeIn(1000)
@@ -72,7 +70,6 @@ function startOver() {
     $('.lose').fadeOut(1000)
     setTimeout(() => {
         currentArray = []
-        // gamePlay = '00'
         init()
     }, 1000);
 }
@@ -94,10 +91,15 @@ function loseGame() {
 
 //checks for win or lose
 function checkStatus() {
-    if (currentArray.includes(gameWin)) {
-        winGame()
-    } else if (currentArray.join('') === gameLoss.join('')) {
-        loseGame()
+    for (i = 0; i < gameWin.length; i++) {
+        if (currentArray.join('') === gameWin[i].join('')) {
+            winGame()
+        }
+    }
+    for (i = 0; i < gameLoss.length; i++) {
+        if (currentArray.join('') === gameLoss[i].join('')) {
+            loseGame()
+        }
     }
 }
 
@@ -107,10 +109,15 @@ function pushText() {
 
     checkStatus()
 
-    if (currentArray.join('') === gameWin.join('')) {
-        return
-    } else if (currentArray.join('') === gameLoss.join('')) {
-        return
+    for (i = 0; i < gameWin.length; i++) {
+        if (currentArray.join('') === gameWin[i].join('')) {
+            return
+        }
+    }
+    for (i = 0; i < gameLoss.length; i++) {
+        if (currentArray.join('') === gameLoss[i].join('')) {
+            return
+        }
     }
 
     setTimeout(() => {
@@ -121,73 +128,87 @@ function pushText() {
                 path1.innerHTML = "Stay put. You don't want to risk leaving when you don't know what's going on.";
                 path2.innerHTML = "Leave now. You'll be safer at home.";
                 break;
-            //choose to stay
+                //choose to stay
             case '0':
                 scenario.innerHTML = "It's getting dark."
                 path1.innerHTML = ""
                 path2.innerHTML = "Go home. You can't wait any longer."
                 break;
-            //choose to leave
-            case '1': case '01':
-                scenario.innerHTML = "You get your bag and go down to your " + supplies.car + ".Your key doesn't work. Thank god for the manual back up! But the car won't start. You try it again.The manual key doesn't save you this time. Are you really about to walk home?" 
+                //choose to leave
+            case '1':
+            case '01':
+                scenario.innerHTML = "You get your bag and go down to your " + supplies.car + ".Your key doesn't work. Thank god for the manual back up! But the car won't start. You try it again.The manual key doesn't save you this time. Are you really about to walk home?"
                 path1.innerHTML = ""
                 path2.innerHTML = "Continue";
                 break;
-            //getting supplies from car
-            case '11': case '011':
+                //getting supplies from car
+            case '11':
+            case '011':
                 scenario.innerHTML = "You " + supplies.supplies
                 path1.innerHTML = ""
                 path2.innerHTML = "Continue";
                 break;
-            //start to walk 
-            case '111': case '0111':
+                //start to walk 
+            case '111':
+            case '0111':
                 scenario.innerHTML = "As you walk you start to see crazy things. Something is very wrong.";
                 path1.innerHTML = "Turn around";
                 path2.innerHTML = "Go faster";
                 break;
-            //choose to turn around 
-            case '1110': case '01110': 
+                //choose to turn around 
+            case '1110':
+            case '01110':
                 scenario.innerHTML = "You go back to the office. A few people are still there hanging around. You wait a few hours and eventually the national guard arrives. They aren't letting people leave for their own safety."
                 path1.innerHTML = ""
                 path2.innerHTML = ""
                 break;
-            //choose to keep going 
-            case '1111': case '01111':
+                //choose to keep going 
+            case '1111':
+            case '01111':
                 scenario.innerHTML = "Home is still 10 miles away, you're getting thirsty. You see a gas station up ahead.";
                 path1.innerHTML = "Stop and get some water.";
                 path2.innerHTML = "Keep going";
                 break;
-            //choose to go to gas station 
-            case '11110': case '011110':
+                //choose to go to gas station 
+            case '11110':
+            case '011110':
                 scenario.innerHTML = "It's chaotic inside. There are five people crowded around the register. It isn't working and neither is the ATM. People are darting in and out.";
                 path1.innerHTML = "Toss a $5 on the counter and get out";
                 path2.innerHTML = "Leave with nothing";
                 break;
-            //choose to take water
-            case '111100': case '0111100':
+                //choose to take water
+            case '111100':
+            case '0111100':
                 scenario.innerHTML = "You hear a shout from behind you.";
                 path1.innerHTML = ""
                 path2.innerHTML = "Run";
                 break;
-            //you make it out of the gas station
-            case '1111001': case '01111001':
+                //you make it out of the gas station
+            case '1111001':
+            case '01111001':
                 scenario.innerHTML = "You made it out";
                 path1.innerHTML = ""
                 path2.innerHTML = "Continue";
                 break;
-            //choose to not get water
-            case '11111': case '011111': case '111101':
+                //choose to not get water
+            case '11111':
+            case '011111':
+            case '111101':
                 scenario.innerHTML = "You're parched but you keep going. You're almost there.";
                 path1.innerHTML = ""
                 path2.innerHTML = "Continue";
                 break;
-            //make it home 
-            case '11110011': case '01111001': case '111111': case '0111111': case '1111011':
+                //make it home 
+            case '11110011':
+            case '01111001':
+            case '111111':
+            case '0111111':
+            case '1111011':
                 scenario.innerHTML = "It's " + supplies.homeTime + " you made it home.";
                 path1.innerHTML = ""
                 path2.innerHTML = ""
                 break;
-            }
+        }
     }, 1000);
 
     setTimeout(() => {
