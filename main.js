@@ -74,8 +74,6 @@ function winGame() {
     }, 6000);
 }
 
-
-
 //end game
 function startOver() {
     $('.lose').fadeOut(1000)
@@ -124,6 +122,7 @@ function checkStatus() {
         }
     }
 }
+
 
 //game play 
 function pushText() {
@@ -218,7 +217,7 @@ function pushText() {
                 scenario.innerHTML = "It's " + supplies.homeTime + " you made it home.";
                 path1.innerHTML = ""
                 path2.innerHTML = ""
-                break;
+                break
         }
     }, 1000);
 
@@ -256,7 +255,7 @@ function initPrepper() {
     pushText()
     supplies.supplies = 'go around to the trunk for your bug out bag and foldable bike'
     supplies.car = 'truck'
-    supplies.homeTime = '9pm but'
+    supplies.homeTime = '2pm.'
     supplies.transportation = 'bike'
 }
 
@@ -265,7 +264,7 @@ function initNormie() {
     pushText()
     supplies.supplies = 'search through your car for anything useful. Some tic-tacs and a half empty water bottle. Fantastic.'
     supplies.car = 'prius'
-    supplies.homeTime = '2pm.'
+    supplies.homeTime = '9pm but'
     supplies.transportation = 'walk'
 }
 
