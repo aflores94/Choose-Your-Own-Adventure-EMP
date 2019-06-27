@@ -95,6 +95,11 @@ h6 {
     display: grid;
     grid-area: 2 / 2 / span 2 / span 1;
     padding: 3vh;
+    
+}
+
+.clickable {
+    cursor: pointer;
 }
 
 img {

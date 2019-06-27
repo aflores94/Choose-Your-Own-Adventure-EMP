@@ -10,7 +10,7 @@
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script defer src='./main.js'></script>
     <link href="https://fonts.googleapis.com/css?family=Squada+One|ZCOOL+KuaiLe" rel="stylesheet">
-    <title>EMP Survival</title>
+    <title>Choose Your Own Adventure - EMP</title>
 </head>
 
 <body>
@@ -20,24 +20,24 @@
     </header>
 
     <section class='menu' id="menu">
-        <div id='start'>New Game</div>
-        <div id='continue'>Saved Game</div>
+        <div class='clickable' id='start'>New Game</div>
+
     </section>
 
     <section class='character-choice'>
         <div id=pick>Pick a Character</div>
-        <div id='prepper'>Prepper
+        <div class='clickable' id='prepper'>Prepper
             <img src="images/compass.jpg" alt="compass">
         </div>
-        <div id='normie'>Couch Potato
+        <div class='clickable' id='normie'>Couch Potato
             <img src="images/couch.png" alt="couch">
         </div>
     </section>
 
     <section class='paths'>
         <div id='scenario'></div>
-        <div id='path1'></div>
-        <div id='path2'></div>
+        <div class='clickable' id='path1'></div>
+        <div class='clickable' id='path2'></div>
     </section>
 
     <section class="lose">
@@ -46,8 +46,8 @@
             <br><br>
             Level Failed
         </div>
-        <div id="try-again">Try Again</div>
-        <div id="end-game">End Game</div>
+        <div class='clickable' id="try-again">Try Again</div>
+        <div class='clickable' id="end-game">End Game</div>
     </section>
 
     <section class="win">
@@ -56,8 +56,7 @@
             <br><br>
             You Made it Home
         </div>
-        <div id="next-level">Next Level</div>
-        <div id="main-menu">Main Menu</div>
+        <div class='clickable' id="main-menu">Main Menu</div>
     </section>
 </body>
 

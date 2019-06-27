@@ -279,6 +279,7 @@ function gameScreen() {
     } else if (this === prepper) {
         initPrepper();
     }
+
 }
 
 //hides menu, displays character choices
